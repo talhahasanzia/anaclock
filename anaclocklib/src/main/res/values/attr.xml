@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AnaClock">
+        <attr name="small_hand_color" format="color" />
+        <attr name="big_hand_color" format="color" />
+        <attr name="dial_color" format="color" />
+        <attr name="start_hour" format="integer"></attr>
+        <attr name="start_minutes" format="integer"></attr>
+        <attr name="is_active" format="boolean"></attr>
+    </declare-styleable>
+
+</resources>
