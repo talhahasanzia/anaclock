@@ -38,12 +38,10 @@ public class AnaClock extends View {
         }
     };
     private int dialColor;
-
     public AnaClock(Context context) {
         super(context);
         init(context, null);
     }
-
     public AnaClock(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -58,14 +56,6 @@ public class AnaClock extends View {
     public AnaClock(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs);
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
     }
 
     private void init(Context context, AttributeSet attributeSet) {
@@ -210,9 +200,37 @@ public class AnaClock extends View {
         }
     }
 
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+        invalidate();
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+        invalidate();
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+
     private void drawBigHand(Canvas canvas, float viewMidX, float viewMidY) {
         Paint paint = new Paint();
         paint.setStrokeWidth(bigHandWidth);
+        paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setColor(bigHandColor);
 
 
@@ -226,6 +244,7 @@ public class AnaClock extends View {
     private void drawSmallHand(Canvas canvas, float viewMidX, float viewMidY) {
         Paint paint = new Paint();
         paint.setStrokeWidth(smallHandWidth);
+        paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setColor(smallHandColor);
 
         smallHandSlope = getHoursAngleFromTime();
@@ -278,16 +297,6 @@ public class AnaClock extends View {
         return Math.toRadians(degreeInAngles - 90);
 
 
-    }
-
-    public void setMinutes(int minutes) {
-        this.minutes = minutes;
-        invalidate();
-    }
-
-    public void setHour(int hour) {
-        this.hour = hour;
-        invalidate();
     }
 
     private float getValidPadding() {
