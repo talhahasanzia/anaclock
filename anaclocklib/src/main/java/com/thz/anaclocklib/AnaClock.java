@@ -8,11 +8,13 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.Calendar;
@@ -21,6 +23,8 @@ import java.util.Calendar;
 public class AnaClock extends View {
 
     private static final String TAG = "ANACLOCK";
+    private final static int SMALL_HAND = 1;
+    private final static int BIG_HAND = 2;
     private int hour, minutes;
     private double smallHandStartX, smallHandEndX, bigHandStartX, bigHandEndX, smallHandStartY, smallHandEndY, bigHandStartY, bigHandEndY;
     private float smallHandLength, bigHandLength, dialRadius;
@@ -38,10 +42,12 @@ public class AnaClock extends View {
         }
     };
     private int dialColor;
+
     public AnaClock(Context context) {
         super(context);
         init(context, null);
     }
+
     public AnaClock(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -198,6 +204,56 @@ public class AnaClock extends View {
             paint.setTextSize(getHeight() * 0.1f);
             canvas.drawText("Error, See logs.", 4, viewMidY, paint);
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN: {
+                if(checkTouchedElement(event.getX(), event.getY())==SMALL_HAND)
+                    Log.d(TAG, "onTouchEvent: small hand touched");
+                else if(checkTouchedElement(event.getX(), event.getY())==BIG_HAND)
+                    Log.d(TAG, "onTouchEvent: big hand touched");
+                else
+                    Log.d(TAG, "onTouchEvent: No hand touch");
+
+
+
+                break;
+            }
+
+        }
+        return true;
+    }
+
+    private int checkTouchedElement(float x, float y) {
+
+        Point clickedPoint = new Point((int) x, (int) y);
+        Point startPoint = new Point((int) smallHandStartX, (int) smallHandStartY);
+
+        // small hand
+        Point smallHandPoint = new Point((int) smallHandEndX, (int) smallHandEndY);
+
+        if (inLine(startPoint, smallHandPoint, clickedPoint))
+            return SMALL_HAND;
+
+        // big hand
+        Point bigHandPoint = new Point((int) bigHandEndX, (int) bigHandEndY);
+
+        if (inLine(startPoint, bigHandPoint, clickedPoint))
+            return BIG_HAND;
+
+        return -1;
+
+    }
+
+    private boolean inLine(Point A, Point B, Point C) {
+        // if AC is horizontal
+        if (A.x == C.x) return B.x == C.x;
+        // if AC is vertical.
+        if (A.y == C.y) return B.y == C.y;
+        // match the gradients
+        return (A.x - C.x) * (A.y - C.y) == (C.x - B.x) * (C.y - B.y);
     }
 
     public int getHour() {
