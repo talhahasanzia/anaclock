@@ -1,7 +1,7 @@
 # AnaClock  [![Release](https://jitpack.io/v/talhahasanzia/anaclock.svg)](https://jitpack.io/#talhahasanzia/anaclock/0.1)  [![GitHub issues](https://img.shields.io/github/issues/talhahasanzia/anaclock.svg)](https://github.com/talhahasanzia/anaclock/issues)   [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 Analog clock skeleton for android.
 
-
+![Preview](https://github.com/talhahasanzia/anaclock/blob/master/preview.gif)
 
 ## Release
 Available Version:  [0.1](https://github.com/talhahasanzia/anaclock/releases/tag/0.1) on [jitpack.io](https://jitpack.io/#talhahasanzia/anaclock/0.1) 
