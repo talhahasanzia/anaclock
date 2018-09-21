@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Shader;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.DrawableRes;
@@ -298,6 +299,7 @@ public class AnaClock extends View {
 
     protected void drawSeconds(Canvas canvas, float viewMidX, float viewMidY) {
         paint.reset();
+        paint.setAntiAlias(true);
         paint.setStrokeWidth(secondsHandWidth);
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setColor(secondsHandColour);
@@ -313,6 +315,7 @@ public class AnaClock extends View {
 
     protected void drawMinutes(Canvas canvas, float viewMidX, float viewMidY) {
         paint.reset();
+        paint.setAntiAlias(true);
         paint.setStrokeWidth(minutesHandWidth);
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setColor(minutesHandColour);
@@ -327,6 +330,7 @@ public class AnaClock extends View {
 
     protected void drawHours(Canvas canvas, float viewMidX, float viewMidY) {
         paint.reset();
+        paint.setAntiAlias(true);
         paint.setStrokeWidth(hoursHandWidth);
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setColor(hoursHandColor);
@@ -341,7 +345,7 @@ public class AnaClock extends View {
 
     protected void drawDial(Canvas canvas, float viewMidX, float viewMidY) {
         paint.reset();
-        paint = new Paint();
+        paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.STROKE);
         paint.setColor(dialColor);
         paint.setStrokeWidth(dialWidth);
