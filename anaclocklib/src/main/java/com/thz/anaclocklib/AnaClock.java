@@ -131,10 +131,10 @@ public class AnaClock extends View {
             hour = attributeArray.getInteger(R.styleable.AnaClock_start_hour, Calendar.getInstance().get(Calendar.HOUR));
             minutes = attributeArray.getInteger(R.styleable.AnaClock_start_minutes, Calendar.getInstance().get(Calendar.MINUTE));
             seconds = attributeArray.getInteger(R.styleable.AnaClock_start_seconds, Calendar.getInstance().get(Calendar.SECOND));
-            dialColor = attributeArray.getColor(R.styleable.AnaClock_dial_color, Color.BLUE);
-            hoursHandColor = attributeArray.getColor(R.styleable.AnaClock_hours_hand_color, Color.RED);
-            minutesHandColour = attributeArray.getColor(R.styleable.AnaClock_minutes_hand_color, Color.BLUE);
-            secondsHandColour = attributeArray.getColor(R.styleable.AnaClock_seconds_hand_color, Color.CYAN);
+            dialColor = attributeArray.getColor(R.styleable.AnaClock_dial_color, Color.DKGRAY);
+            hoursHandColor = attributeArray.getColor(R.styleable.AnaClock_hours_hand_color, Color.DKGRAY);
+            minutesHandColour = attributeArray.getColor(R.styleable.AnaClock_minutes_hand_color, Color.GRAY);
+            secondsHandColour = attributeArray.getColor(R.styleable.AnaClock_seconds_hand_color, Color.RED);
             isActive = attributeArray.getBoolean(R.styleable.AnaClock_is_active, true);
             attributeArray.recycle();
 
