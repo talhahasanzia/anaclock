@@ -60,5 +60,5 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE.md](htt
 ## Acknowledgments
 
 * Inspiration : At the moment Android does not provide much customization for Time widgets so this was my take on it.
-* Motivation: Great help from my mentor [@syedowaisali](https://github.com/syedowaisali)
+* Motivation: Great help from [@syedowaisali](https://github.com/syedowaisali)
 
